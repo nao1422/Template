@@ -207,6 +207,9 @@
     <Content Include="App_Data\aspnet-EndToEnd-20160305033008_log.ldf">
       <DependentUpon>aspnet-EndToEnd-20160305033008.mdf</DependentUpon>
     </Content>
+    <Content Include="Assists\Carousel\Carousel01.jpg" />
+    <Content Include="Assists\Carousel\Carousel02.jpg" />
+    <Content Include="Assists\Carousel\Carousel03.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -239,7 +242,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -285,6 +288,7 @@
       <DependentUpon>201712102055159_AddedEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

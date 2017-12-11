@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Pureco Inc. - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,12 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Pure Inc.", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("News", "News", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (User.IsInRole("Administrator"))
                     {
@@ -37,7 +37,38 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container">
+                <!--Site Quick Links-->
+                <div class="col-md-4">
+                    <h2>Quick Links</h2>
+                    <p><i class="fa fa-home" style="font-size:18px;">@Html.ActionLink(" Home", "Index", "Home")</i></p>
+                    <p><i class="fa fa-newspaper-o" style="font-size:18px;">@Html.ActionLink(" News", "News", "Home")</i></p>
+                    <p><i class="fa fa-telegram" style="font-size:18px;">@Html.ActionLink(" Contact", "Contact", "Home")</i></p>
+                </div>
+                <!--Social Media-->
+                <div class="col-md-4">
+                    <h2>Social Media</h2>
+                    <a href="http://www.facebook.com"><i class="fa fa-facebook-square" style="font-size:44px;"></i></a>
+                    <a href="http://www.google.com"><i class="fa fa-google-plus-square" style="font-size:44px;"></i></a>
+                    <a href="http://www.Instagram.com"><i class="fa fa-instagram" style="font-size:44px;"></i></a>
+                    <a href="http://www.linkedin.com"><i class="fa fa-linkedin-square" style="font-size:44px;"></i></a>
+                    <a href="http://www.pinterst.com"><i class="fa fa-pinterest-square" style="font-size:44px;"></i></a>
+                    <a href="http://www.snapchat.com"><i class="fa fa-snapchat-square" style="font-size:44px;"></i></a>
+                    <a href="http://www.twitter.com"><i class="fa fa-twitter-square" style="font-size:44px;"></i></a>
+                </div>
+                <!--Newsletter Signup-->
+                <div class="col-md-4">
+                    <h2>Newsletter Signup</h2>
+                    <form class="form-inline" action="" method="post" role="form">
+                        <div class="input-group form-group">
+                            <input type="text" name="email" placeholder="email@email.com" required class="form-control" />
+                        </div>
+                        <input type="submit" value="Sign Up" class="btn btn-default" />
+                    </form>
+                </div>
+            </div>
+            <!--Terms of User and Privacy Policy-->
+            <p>© @DateTime.Now.Year Pureco Inc. All rights reserved. <a>Terms of Use</a> | <a>Privacy Policy</a></p>
         </footer>
     </div>
 
