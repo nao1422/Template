@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +17,15 @@ namespace EndToEnd.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //News database migration
+        public List<News> News { get; set; }
+
+        //Content database migration
+        public List<Content> Contents { get; set; }
+
+        //Newsletter user email list
+        public List<Newsletter> Newsletters { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
