@@ -3,7 +3,7 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
 <p>
@@ -14,7 +14,6 @@
 <br />
 @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
 {
-
     <div class="form-group">
         Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
 
@@ -25,13 +24,8 @@
 
 <table class="table">
     <tr>
-        <th>
-            Email
-        </th>
-        <th>
-            Locked Out
-        </th>
-        <th></th>
+        <th>Email</th>
+        <th>Control</th>
     </tr>
 
     @foreach (var item in Model)
@@ -39,9 +33,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
@@ -53,15 +44,12 @@
             </td>
         </tr>
     }
-
-
 </table>
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model,
-    page => Url.Action("Index",
-    new { page,
+    page => Url.Action("Index",new { page,
         searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
         currentFilter = ViewBag.CurrentFilter }))
 <hr />
