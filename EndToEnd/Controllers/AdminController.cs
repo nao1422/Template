@@ -24,8 +24,67 @@ namespace EndToEnd.Controllers
 
         // GET: /Admin/
         [Authorize(Roles = "Administrator")]
-        #region public ActionResult Index(string searchStringUserNameOrEmail)
-        public ActionResult Index(string searchStringUserNameOrEmail, string currentFilter, int? page)
+        #region public ActionResult Index()
+        public ActionResult Index()
+        {
+            return View();
+        }
+        #endregion
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult News()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Newsletter()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DisplaySlider()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return View(db.SliderGalleries.ToList());
+            }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult AddSlider(HttpPostedFileBase imagePath)
+        {
+            if(imagePath != null)
+            {
+                //Forcing certain resultion
+                System.Drawing.Image image = System.Drawing.Image.FromStream(imagePath.InputStream);
+                if ((image.Width != 1600) || (image.Height != 1200))
+                {
+                    ModelState.AddModelError("", "Image resultion must be 1600 x 1200 pixels");
+                    return View();
+                }
+
+                //Upload image
+                string picture = System.IO.Path.GetFileName(imagePath.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Content/Slider"));
+                imagePath.SaveAs(path);
+                using (ApplicationDbContext db = new ApplicationDbContext())
+                {
+                    SliderGallery slider = new SliderGallery { ImagePath = "~/Content/Slider/" + picture };
+                    db.SliderGalleries.Add(slider);
+                    db.SaveChanges();
+                }
+            }
+            return View();
+        }
+
+
+
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Users(string searchStringUserNameOrEmail, string currentFilter, int? page)
         {
             try
             {
@@ -95,8 +154,6 @@ namespace EndToEnd.Controllers
                 return View(col_UserDTO.ToPagedList(1, 25));
             }
         }
-        #endregion
-
         // Users *****************************
 
         // GET: /Admin/Edit/Create 
@@ -540,7 +597,6 @@ namespace EndToEnd.Controllers
             }
         }
         #endregion
-
 
         // Utility
 

@@ -10,7 +10,6 @@ namespace EndToEnd.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "EndToEnd.Models.ApplicationDbContext";
         }
 
         protected override void Seed(EndToEnd.Models.ApplicationDbContext context)

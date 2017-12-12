@@ -17,19 +17,22 @@ namespace EndToEnd.Models
             // Add custom user claims here
             return userIdentity;
         }
-
-        //News database migration
-        public List<News> News { get; set; }
-
-        //Content database migration
-        public List<Content> Contents { get; set; }
-
-        //Newsletter user email list
-        public List<Newsletter> Newsletters { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //News database migration
+        public DbSet<News> News { get; set; }
+
+        //Content database migration
+        public DbSet<Content> Contents { get; set; }
+
+        //Newsletter user email list migraion
+        public DbSet<Newsletter> Newsletters { get; set; }
+
+        //Slider Gallery migration
+        public DbSet<SliderGallery> SliderGalleries { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
