@@ -1,34 +1,34 @@
 ﻿@{
     ViewBag.Title = "Admin Home Page";
-}
-
-@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!--Slider Management-->
+<!--Image Slider-->
 <div class="container well">
     <h2>Slider Management</h2>
-    @Html.Partial("_DisplaySliderImages")
+    @Html.Partial("_ImageSlider")
 </div>
 
 <br />
 
-<!--About Text Management-->
+<!--Company Text-->
 <div class="container well">
     <h2>About Text Management</h2>
+    @Html.Partial("_CompanyText")
 </div>
 
 <br />
 
-<!--Product Showcase Management-->
+<!--Product Showcase-->
 <div class="container well">
     <h2>Product Showcase Management</h2>
+    @Html.Partial("_ProductShowcase")
 </div>
 
 <br />
 
-<!--Footer Management-->
+<!--Footer-->
 <div class="container well">
     <h2>Footer Management</h2>
+    @Html.Partial("_Footer")
 </div>

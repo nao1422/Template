@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201712121117410_AddedEntities.Designer.cs">
       <DependentUpon>201712121117410_AddedEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131015587_UpdateTables.cs" />
+    <Compile Include="Migrations\201712131015587_UpdateTables.Designer.cs">
+      <DependentUpon>201712131015587_UpdateTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Content.cs" />
@@ -191,7 +195,7 @@
     <Compile Include="Models\Newsletter.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\News.cs" />
-    <Compile Include="Models\SliderGallery.cs" />
+    <Compile Include="Models\ImageSlider.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -209,9 +213,9 @@
     <Content Include="Content\images\controls.png" />
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\jquery.bxslider.min.css" />
-    <Content Include="Content\Slider\Slider01.jpg" />
-    <Content Include="Content\Slider\Slider02.jpg" />
-    <Content Include="Content\Slider\Slider03.jpg" />
+    <Content Include="Content\ImageSlider\Slider01.jpg" />
+    <Content Include="Content\ImageSlider\Slider02.jpg" />
+    <Content Include="Content\ImageSlider\Slider03.jpg" />
     <Content Include="Content\Logo.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\simple-sidebar.css" />
@@ -293,12 +297,26 @@
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\News.cshtml" />
     <Content Include="Views\Admin\Newsletter.cshtml" />
-    <Content Include="Views\Admin\_DisplaySliderImages.cshtml" />
-    <Content Include="Views\Admin\_DeleteSliderImages.cshtml" />
+    <Content Include="Views\Admin\_DisplayImageSlider.cshtml" />
+    <Content Include="Views\Admin\_DeleteImageSlider.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\Admin\_AddSliderImages.cshtml" />
+    <Content Include="Views\Admin\_AddImageSlider.cshtml" />
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
+    <Content Include="Views\Admin\_UpdateCompanyText.cshtml" />
+    <Content Include="Views\Admin\_ProductShowcase.cshtml" />
+    <Content Include="Views\Admin\_Footer.cshtml" />
+    <Content Include="Views\Admin\_DisplayNewsSlider.cshtml" />
+    <Content Include="Views\Admin\_AddNewsSlider.cshtml" />
+    <Content Include="Views\Admin\_DeleteNewsSlider.cshtml" />
+    <Content Include="Views\Admin\_DisplayNewsletterUserList.cshtml" />
+    <Content Include="Views\Admin\_SendNewsletter.cshtml" />
+    <Content Include="Views\Admin\_ImageSlider.cshtml" />
+    <Content Include="Views\Admin\_CompanyText.cshtml" />
+    <Content Include="Views\Admin\_UpdateProductShowcase.cshtml" />
+    <Content Include="Views\Admin\_UpdateFooter.cshtml" />
+    <Content Include="Views\Admin\_NewsSlider.cshtml" />
+    <Content Include="Views\Admin\_NewsletterUserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -307,6 +325,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712121117410_AddedEntities.resx">
       <DependentUpon>201712121117410_AddedEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131015587_UpdateTables.resx">
+      <DependentUpon>201712131015587_UpdateTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

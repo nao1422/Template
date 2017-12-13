@@ -1,13 +1,10 @@
 ﻿@{
     ViewBag.Title = "Admin News Page";
-}
-@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!--News Slider Management-->
 <div class="container well">
     <h2>News Slider Management</h2>
+    @Html.Partial("_NewsSlider")
 </div>
-
-<br />

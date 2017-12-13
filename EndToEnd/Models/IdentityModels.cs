@@ -30,8 +30,8 @@ namespace EndToEnd.Models
         //Newsletter user email list migraion
         public DbSet<Newsletter> Newsletters { get; set; }
 
-        //Slider Gallery migration
-        public DbSet<SliderGallery> SliderGalleries { get; set; }
+        //Image Slider migration
+        public DbSet<ImageSlider> ImageSlider { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

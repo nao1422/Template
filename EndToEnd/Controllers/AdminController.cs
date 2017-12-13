@@ -24,12 +24,10 @@ namespace EndToEnd.Controllers
 
         // GET: /Admin/
         [Authorize(Roles = "Administrator")]
-        #region public ActionResult Index()
         public ActionResult Index()
         {
             return View();
         }
-        #endregion
 
         [Authorize(Roles = "Administrator")]
         public ActionResult News()
@@ -44,22 +42,28 @@ namespace EndToEnd.Controllers
         }
 
         [Authorize(Roles = "Administrator")]
-        public ActionResult DisplaySliderImages()
+        public ActionResult ImageSlider()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DisplayImageSlider()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                return View(db.SliderGalleries.ToList());
+                return View(db.ImageSlider.ToList());
             }
         }
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public ActionResult AddSliderImages(HttpPostedFileBase imagePath)
+        public ActionResult AddImageSlider(HttpPostedFileBase ImagePath)
         {
-            if(imagePath != null)
+            if(ImagePath != null)
             {
-                //Forcing certain resultion
-                System.Drawing.Image image = System.Drawing.Image.FromStream(imagePath.InputStream);
+                //Forcing certain resultion for uploaded images
+                System.Drawing.Image image = System.Drawing.Image.FromStream(ImagePath.InputStream);
                 if ((image.Width != 1600) || (image.Height != 1200))
                 {
                     ModelState.AddModelError("", "Image resultion must be 1600 x 1200 pixels");
@@ -67,13 +71,13 @@ namespace EndToEnd.Controllers
                 }
 
                 //Upload image
-                string picture = System.IO.Path.GetFileName(imagePath.FileName);
-                string path = System.IO.Path.Combine(Server.MapPath("~/Content/Slider"));
-                imagePath.SaveAs(path);
+                string picture = System.IO.Path.GetFileName(ImagePath.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Content/ImageSlider"));
+                ImagePath.SaveAs(path);
                 using (ApplicationDbContext db = new ApplicationDbContext())
                 {
-                    SliderGallery slider = new SliderGallery { ImagePath = "~/Content/Slider/" + picture };
-                    db.SliderGalleries.Add(slider);
+                    ImageSlider ImageSlider = new ImageSlider { ImagePath = "~/Content/ImageSlider/" + picture };
+                    db.ImageSlider.Add(ImageSlider);
                     db.SaveChanges();
                 }
             }
@@ -81,30 +85,138 @@ namespace EndToEnd.Controllers
         }
 
         [Authorize(Roles = "Administrator")]
-        public ActionResult DeleteSliderImages()
+        public ActionResult DeleteImageSlider()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                return View(db.SliderGalleries.ToList());
+                return View(db.ImageSlider.ToList());
             }
         }
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public ActionResult DeleteSliderImages(IEnumerable<int> ImageIDs)
+        public ActionResult DeleteImageSlider(IEnumerable<int> ImageIDs)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 foreach (var id in ImageIDs)
                 {
-                    var image = db.SliderGalleries.Single(s => s.Id == id);
+                    var image = db.ImageSlider.Single(s => s.Id == id);
                     string imagePath = Server.MapPath(image.ImagePath);
-                    db.SliderGalleries.Remove(image);
+                    db.ImageSlider.Remove(image);
                     if (System.IO.File.Exists(imagePath))
                         System.IO.File.Delete(imagePath);
                 }
                 db.SaveChanges();
             }
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult CompanyText()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateCompanyText()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateCompanyText(string CompanyText)
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult ProductShowcase()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateProductShowcase()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateProductShowcase(IEnumerable<int> ImageIDs)
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Footer()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateFooter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UpdateFooter(IEnumerable<string> FooterIDs)
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult NewsSider()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DisplayNewsSider()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult AddNewsSlider(string News)
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteNewsSlider()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteNewsSlider(IEnumerable<int> NewsIDs)
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult NewsletterUserList()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DisplayNewsletterUserList()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult SendNewsletter(IEnumerable<string> Newsletter)
+        {
             return View();
         }
 
