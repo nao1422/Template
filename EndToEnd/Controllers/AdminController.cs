@@ -44,7 +44,7 @@ namespace EndToEnd.Controllers
         }
 
         [Authorize(Roles = "Administrator")]
-        public ActionResult DisplaySlider()
+        public ActionResult DisplaySliderImages()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
@@ -54,7 +54,7 @@ namespace EndToEnd.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public ActionResult AddSlider(HttpPostedFileBase imagePath)
+        public ActionResult AddSliderImages(HttpPostedFileBase imagePath)
         {
             if(imagePath != null)
             {
@@ -80,8 +80,33 @@ namespace EndToEnd.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteSliderImages()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return View(db.SliderGalleries.ToList());
+            }
+        }
 
-
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult DeleteSliderImages(IEnumerable<int> ImageIDs)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                foreach (var id in ImageIDs)
+                {
+                    var image = db.SliderGalleries.Single(s => s.Id == id);
+                    string imagePath = Server.MapPath(image.ImagePath);
+                    db.SliderGalleries.Remove(image);
+                    if (System.IO.File.Exists(imagePath))
+                        System.IO.File.Delete(imagePath);
+                }
+                db.SaveChanges();
+            }
+            return View();
+        }
 
         [Authorize(Roles = "Administrator")]
         public ActionResult Users(string searchStringUserNameOrEmail, string currentFilter, int? page)

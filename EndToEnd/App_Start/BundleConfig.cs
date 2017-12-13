@@ -26,6 +26,9 @@ namespace EndToEnd
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/slider").Include(
+                      "~/Scripts/jquery.bxslider.js"));
         }
     }
 }
